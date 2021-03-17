@@ -22,4 +22,4 @@ end
 
 array = %w[sharon leo leila brian aaron]
 array2 = [2, 3, 3]
-puts my_select(array) { |friend| friend.length > 3 }
+puts my_select(array) { |friend| friend.length > 6 }

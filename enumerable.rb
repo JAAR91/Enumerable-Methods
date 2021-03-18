@@ -45,9 +45,9 @@ module Enumerable
     count
   end
 
-  def my_map()
+  def my_map(proc = nil)
     newarray = []
-    self.my_each{|item| newarray.push(yield(item))}
+    self.my_each{|item| newarray.push(proc[item])}
     newarray
   end
 
@@ -60,7 +60,9 @@ module Enumerable
   def multiply_els()
     self.my_inject{ |factora, factorb| factora * factorb }
   end
+
 end
 
 array = [1, 2, 3, 4]
-p array.my_inject { |product, n| product * n}
+multiply = Proc.new{|num| num * 2}
+p array.my_map(multiply)

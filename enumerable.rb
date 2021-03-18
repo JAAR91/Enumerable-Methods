@@ -41,4 +41,4 @@ module Enumerable
 end
 
 array = %w[sharon leo leila brian aaron]
-puts array.my_none?(array) {|item| item == 'jose' }
+puts array.my_none?(array) {|item| item == 'leo' }

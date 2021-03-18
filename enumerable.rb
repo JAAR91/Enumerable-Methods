@@ -62,7 +62,5 @@ module Enumerable
   end
 end
 
-array = [1, 2, 3]
+array = [1, 2, 3, 4]
 p array.my_inject { |product, n| product * n}
-
-p array.multiply_els

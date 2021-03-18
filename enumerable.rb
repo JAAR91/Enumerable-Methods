@@ -32,7 +32,13 @@ module Enumerable
     array.my_each(array){|item| output = true if yield(item)}
     output
   end
+
+  def my_none?(array)
+    output = true
+    array.my_each(array){|item| output = false if yield(item)}
+    output
+  end 
 end
 
 array = %w[sharon leo leila brian aaron]
-puts array.my_any?(array) {|item| item == 'leo' }
+puts array.my_none?(array) {|item| item == 'jose' }

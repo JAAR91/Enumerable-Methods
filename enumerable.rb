@@ -1,19 +1,19 @@
 module Enumerable
-  def my_each(array)
+  def my_each()
     i = 0
-    while (i - array.length).negative?
-      yield(array[i])
+    while (i - self.length).negative?
+      yield(self[i])
       i += 1
     end
   end
 
-  def my_each_with_index(array)
-    array.length.times do |i|
-      yield(array[i], i)
+  def my_each_with_index()
+    self.length.times do |i|
+      yield(self[i], i)
     end
   end
 
-  def my_select(array)
+  def my_select()
     newarray = []
     array.each do |item|
       newarray.push(item) if yield(item)
@@ -21,36 +21,42 @@ module Enumerable
     newarray
   end
 
-  def my_all?(array)   
+  def my_all?()   
     output = true 
-    array.my_each(array){|item| output = false if !yield(item)}      
+    self.my_each{|item| output = false if !yield(item)}      
     output  
   end
 
-  def my_any?(array)
+  def my_any?()
     output = false
-    array.my_each(array){|item| output = true if yield(item)}
+    self.my_each{|item| output = true if yield(item)}
     output
   end
 
-  def my_none?(array)
+  def my_none?()
     output = true
-    array.my_each(array){|item| output = false if yield(item)}
+    self.my_each{|item| output = false if yield(item)}
     output
   end 
 
-  def my_count(array)
+  def my_count()
     count = 0
-    array.my_each(array){|item| count += 1 if yield(item)}
+    self.my_each{|item| count += 1 if yield(item)}
     count
   end
 
-  def my_map(array)
+  def my_map()
     newarray = []
-    array.my_each(array){|item| newarray.push(yield(item))}
+    self.my_each{|item| newarray.push(yield(item))}
     newarray
+  end
+
+  def my_inject()
+    result=self[0]
+    self.my_each{|item| result=yield(result,item)}
+    result
   end
 end
 
-array = %w[sharon leo leila brian aaron jose]
-puts array.my_map(array) {|item| item.upcase }
+array = [1, 2, 3]
+p array.my_inject { |product, n| product * n}

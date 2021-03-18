@@ -38,7 +38,13 @@ module Enumerable
     array.my_each(array){|item| output = false if yield(item)}
     output
   end 
+
+  def my_count(array)
+    count = 0
+    array.my_each(array){|item| count += 1 if yield(item)}
+    count
+  end
 end
 
 array = %w[sharon leo leila brian aaron]
-puts array.my_none?(array) {|item| item == 'leo' }
+puts array.my_count(array) {|item| item != 'jose' }

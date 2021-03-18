@@ -52,5 +52,5 @@ module Enumerable
   end
 end
 
-array = %w[sharon leo leila brian aaron]
+array = %w[sharon leo leila brian aaron jose]
 puts array.my_map(array) {|item| item.upcase }

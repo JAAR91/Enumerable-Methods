@@ -56,7 +56,13 @@ module Enumerable
     self.my_each{|item| result=yield(result,item)}
     result
   end
+
+  def multiply_els()
+    self.my_inject{ |factora, factorb| factora * factorb }
+  end
 end
 
 array = [1, 2, 3]
 p array.my_inject { |product, n| product * n}
+
+p array.multiply_els

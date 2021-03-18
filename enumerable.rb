@@ -21,12 +21,18 @@ module Enumerable
     newarray
   end
 
-  def my_all(array)   
-    output=true 
-  array.my_each(array){|item| output=false if !yield(item)}      
-  return output  
+  def my_all?(array)   
+    output = true 
+    array.my_each(array){|item| output = false if !yield(item)}      
+    output  
+  end
+
+  def my_any?(array)
+    output = false
+    array.my_each(array){|item| output = true if yield(item)}
+    output
   end
 end
 
 array = %w[sharon leo leila brian aaron]
-puts array.my_all(array) {|item| item.length<10}
+puts array.my_any?(array) {|item| item == 'jose' }
